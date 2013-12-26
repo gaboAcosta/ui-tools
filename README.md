@@ -30,6 +30,7 @@ And this to your aliases array:
 ```
 
 
+
 Then open up the config file /app/config/navBar.php
 
 Please note that the array for the menu entries is called routes, this means that as of this release you must
