@@ -8,7 +8,7 @@
 namespace GaboAcosta\UITools\Navigation;
 
 
-class Link implements DOMNodeInteface {
+class Link implements DOMNodeInterface {
     protected $href;
     protected $text;
     protected $selected = false ;

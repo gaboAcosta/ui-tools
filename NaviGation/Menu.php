@@ -6,7 +6,7 @@
  */
 namespace GaboAcosta\UITools\Navigation;
 
-class Menu implements DOMNodeInteface {
+class Menu implements DOMNodeInterface {
 
     protected $dom;
     protected $domNode;

@@ -6,6 +6,6 @@
  */
 namespace GaboAcosta\UITools\Navigation;
 
-interface DOMNodeInteface{
+interface DOMNodeInterface{
     public function getDOMNode();
 }
