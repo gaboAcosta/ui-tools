@@ -1,0 +1,19 @@
+{
+  "name": "gaboacosta/ui-tools",
+  "description": "A Library of helpers and adapters to ease web development",
+  "version": "0.0.1",
+  "require": {
+  },
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Gabriel Acosta",
+      "email": "gabo@gaboacosta.com"
+    }
+  ],
+  "autoload": {
+    "psr-0": { "GaboAcosta\\UITools\\": "" }
+  },
+  "target-dir": "GaboAcosta/UITools"
+
+}
