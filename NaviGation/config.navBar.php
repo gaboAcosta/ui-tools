@@ -1,5 +1,21 @@
 <?php
 return array(
+    'navbar' => array(
+        'title-area'=> array(
+            'class' => '',
+            'title' => array(
+                'html-tag' => 'img',
+                'attributes'=> array(
+                    'src'   => '',
+                    'class' => '',
+                    'alt'   => '',
+
+                ),
+            ),
+
+        ),
+
+    ),
     'routes' => array(
         'Simple Link' => array(
             'type' => 'link',
