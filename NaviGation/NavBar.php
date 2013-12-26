@@ -20,8 +20,12 @@ class NavBar {
     protected $routes = array();
     protected $dom;
     protected $nav;
+    protected $config;
 
     public function setup(){
+
+        $this->config = \Config::get('navBar');
+
         $dom = $this->getDOM();
 
         $this->nav = $dom->createElement('nav');
@@ -53,7 +57,12 @@ class NavBar {
 
         $dom = $this->getDOM();
         $ul = $dom->createElement('ul');
-        $ul->setAttribute('class','title-area show-for-small-only');
+
+        $title_class = 'title-area';
+        if('' != $this->config['navbar']['title-area']['class']){
+            $title_class.= ' '.$this->config['navbar']['title-area']['class'];
+        }
+        $ul->setAttribute('class',$title_class);
         $li = $dom->createElement('li');
         $li->setAttribute('class','name');
         $ul->appendChild($li);
@@ -62,19 +71,30 @@ class NavBar {
         $link = $dom->createElement('a');
         $link->setAttribute('href','#');
         $h1->appendChild($link);
-        $logo = $dom->createElement('img');
-        $logo->setAttribute('src','/app/images/logo.png');
-        $logo->setAttribute('class',"title-logo");
-        $logo->setAttribute('alt','Logotipo Picacho');
-        $link->appendChild($logo);
+
+        $title = $this->config['navbar']['title-area']['title'];
+
+        $titleTag = $dom->createElement($title['html-tag']);
+
+        foreach($title['attributes'] as $attribute=>$value){
+            $titleTag->setAttribute($attribute,$value);
+        }
+        if(isset($title['text'])){
+            $titleTag->nodeValue = $title['text'];
+        }
+
+        $link->appendChild($titleTag);
+
         $toggle = $dom->createElement('li');
         $toggle->setAttribute('class','toggle-topbar menu-icon');
         $ul->appendChild($toggle);
         $toggleLink = $dom->createElement('a');
         $toggleLink->setAttribute('href','#');
         $toggle->appendChild($toggleLink);
+
         $text = $dom->createElement('span');
         $text->nodeValue = "Menu";
+
         $toggleLink->appendChild($text);
         return $ul;
     }
@@ -100,7 +120,7 @@ class NavBar {
     }
 
     protected function getItemsList(){
-        return \Config::get('navBar.routes');
+        return $this->config['routes'];
     }
 
     protected function loadItems(){
